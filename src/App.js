@@ -1,21 +1,29 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
 
-import './App.css'
-
+import "./App.css";
 
 class App extends React.Component {
-    state = { advice: ' '};
+  state = { advice: " " };
 
-    componentDidMount(){
-        console.log('Component did mount')
-    }
+  componentDidMount() {
+    console.log("Component did mount");
+  }
 
-    render () {
-        return (
-            <h1> APP </h1>
-        );
-     }
+  fetchAdvice = () => {
+    axios
+      .get("https://api.adviceslip.com/advice")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  render() {
+    return <h1> APP </h1>;
+  }
 }
 
 export default App;
